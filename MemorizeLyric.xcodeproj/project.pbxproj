@@ -15,6 +15,7 @@
 		CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6CF7F524C557DE00576F2D /* LaunchScreen.storyboard */; };
 		CA6CF80224C557DE00576F2D /* MemorizeLyricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80124C557DE00576F2D /* MemorizeLyricTests.swift */; };
 		CA6CF80D24C557DE00576F2D /* MemorizeLyricUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */; };
+		CAC520AD24C74EDA002B2073 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAC520AC24C74EDA002B2073 /* test.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CA6CF80824C557DE00576F2D /* MemorizeLyricUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemorizeLyricUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeLyricUITests.swift; sourceTree = "<group>"; };
 		CA6CF80E24C557DE00576F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAC520AC24C74EDA002B2073 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		CA6CF7E924C557DE00576F2D /* MemorizeLyric */ = {
 			isa = PBXGroup;
 			children = (
+				CAC520AC24C74EDA002B2073 /* test.mp3 */,
 				CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */,
 				CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */,
 				CA6CF7EE24C557DE00576F2D /* ViewController.swift */,
@@ -234,6 +237,7 @@
 			files = (
 				CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */,
 				CA6CF7F424C557DE00576F2D /* Assets.xcassets in Resources */,
+				CAC520AD24C74EDA002B2073 /* test.mp3 in Resources */,
 				CA6CF7F224C557DE00576F2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
