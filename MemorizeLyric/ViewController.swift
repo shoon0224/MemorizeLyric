@@ -10,11 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
+    @IBOutlet var tfLyric: UITextField!
+    @IBOutlet var pvProgress: UIProgressView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
 }
 
