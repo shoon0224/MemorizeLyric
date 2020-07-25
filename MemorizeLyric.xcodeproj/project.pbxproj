@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47B24CB4759002A0BEE /* Made in you.mp3 */; };
+		CA34D47F24CB475A002A0BEE /* 처음 보는 나.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */; };
+		CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47D24CB475A002A0BEE /* 별.mp3 */; };
 		CA6CF7EB24C557DE00576F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */; };
 		CA6CF7ED24C557DE00576F2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */; };
 		CA6CF7EF24C557DE00576F2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EE24C557DE00576F2D /* ViewController.swift */; };
@@ -15,7 +18,7 @@
 		CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6CF7F524C557DE00576F2D /* LaunchScreen.storyboard */; };
 		CA6CF80224C557DE00576F2D /* MemorizeLyricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80124C557DE00576F2D /* MemorizeLyricTests.swift */; };
 		CA6CF80D24C557DE00576F2D /* MemorizeLyricUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */; };
-		CAC520AD24C74EDA002B2073 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAC520AC24C74EDA002B2073 /* test.mp3 */; };
+		CAFF9AC424CC0AE300B54CB7 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA34D47B24CB4759002A0BEE /* Made in you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Made in you.mp3"; sourceTree = "<group>"; };
+		CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "처음 보는 나.mp3"; sourceTree = "<group>"; };
+		CA34D47D24CB475A002A0BEE /* 별.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "별.mp3"; sourceTree = "<group>"; };
 		CA6CF7E724C557DE00576F2D /* MemorizeLyric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeLyric.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +56,7 @@
 		CA6CF80824C557DE00576F2D /* MemorizeLyricUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemorizeLyricUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeLyricUITests.swift; sourceTree = "<group>"; };
 		CA6CF80E24C557DE00576F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAC520AC24C74EDA002B2073 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
+		CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +107,9 @@
 		CA6CF7E924C557DE00576F2D /* MemorizeLyric */ = {
 			isa = PBXGroup;
 			children = (
-				CAC520AC24C74EDA002B2073 /* test.mp3 */,
+				CA34D47D24CB475A002A0BEE /* 별.mp3 */,
+				CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */,
+				CA34D47B24CB4759002A0BEE /* Made in you.mp3 */,
 				CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */,
 				CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */,
 				CA6CF7EE24C557DE00576F2D /* ViewController.swift */,
@@ -109,6 +117,7 @@
 				CA6CF7F324C557DE00576F2D /* Assets.xcassets */,
 				CA6CF7F524C557DE00576F2D /* LaunchScreen.storyboard */,
 				CA6CF7F824C557DE00576F2D /* Info.plist */,
+				CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */,
 			);
 			path = MemorizeLyric;
 			sourceTree = "<group>";
@@ -235,10 +244,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */,
+				CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */,
 				CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */,
 				CA6CF7F424C557DE00576F2D /* Assets.xcassets in Resources */,
-				CAC520AD24C74EDA002B2073 /* test.mp3 in Resources */,
 				CA6CF7F224C557DE00576F2D /* Main.storyboard in Resources */,
+				CA34D47F24CB475A002A0BEE /* 처음 보는 나.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFF9AC424CC0AE300B54CB7 /* RangeSlider.swift in Sources */,
 				CA6CF7EF24C557DE00576F2D /* ViewController.swift in Sources */,
 				CA6CF7EB24C557DE00576F2D /* AppDelegate.swift in Sources */,
 				CA6CF7ED24C557DE00576F2D /* SceneDelegate.swift in Sources */,
