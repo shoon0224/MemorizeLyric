@@ -3,6 +3,7 @@
 
 
 구간 슬라이더 사용
+
 Configuration
 The range slider can be customized and information can be accessed through these properties :
 
