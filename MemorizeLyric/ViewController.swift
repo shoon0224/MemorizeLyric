@@ -12,16 +12,13 @@ import QuartzCore
 
 class ViewController: UIViewController, AVAudioPlayerDelegate{
     
-    let rangeSlider = RangeSlider(frame: CGRect.zero)
-    
-    var changeState = 0
-    
+    let rangeSlider = RangeSlider(frame: CGRect.zero) //구간 슬라이더를 쓰기위한 변수
+    var changeState = 0 //재생중인지 일시정지인지 정지상태인지 상태값을 위한 변수
     var audioPlayer : AVAudioPlayer! //audioPlayer : AVAudioPlayer 인스턴스 변수
     var audioFile : URL! // 재생할 오디오의 파일명 변수
     var MAX_VOLUME : Float = 10.0 // 최대 볼륨, 실수형 상수
     var progressTimer : Timer! // 타이머를 위한 변수
-    var repeatState = false
-    
+    var repeatState = false //반복재생 상태 초기화
     let timePlayerSelector:Selector = #selector(ViewController.updatePlayTime) //#selector이란 함수는 함수내에서 매개변수로 다른 함수를 호출할때 사용하는 함수
     
     @IBOutlet var btnList: UIButton!
@@ -31,7 +28,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet var pvProgressView: UISlider!
     @IBOutlet var aPartTime: UILabel!
     @IBOutlet var bPartTime: UILabel!
-    
     @IBOutlet var btnPlay: UIButton!
     @IBOutlet var btnNext: UIButton!
     @IBOutlet var btnPause: UIButton!
@@ -39,21 +35,18 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet var btnPre: UIButton!
     @IBOutlet var soundSlider: UISlider!
     @IBOutlet var btRandom: UIImageView!
-    @IBOutlet var btLoop: UIImageView!
-    
-    
+    @IBOutlet var btnRepeat: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        pvProgressView.setThumbImage(UIImage(named: "pin.png"), for: UIControl.State.normal) // 평상시 재생중인 핀 이미지
+        pvProgressView.setThumbImage(UIImage(named: "pin.png"), for: UIControl.State.highlighted) //드래그 시 재생중인 핀 이미지
+        btnRepeat.setImage(UIImage(named: "repeat_s.png"), for: UIControl.State.normal) //반복 재생 이미지 기본값
         
-        
-        
-        view.addSubview(rangeSlider)
-        rangeSlider.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), for: .valueChanged)
-        
-        
+        view.addSubview(rangeSlider) // 구간 슬라이더 보이기
+        rangeSlider.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), for: .valueChanged) //구간슬라이더 함수
         selectAudioFile() //파일선택 실행
         initplay() //재생 모드 초기화함수 실행
     }
@@ -61,55 +54,46 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
     
     
     
-    // MARK:- slider 옵션
-    override func viewDidLayoutSubviews() {
+    
+    // MARK:- 구간 슬라이더 함수
+    override func viewDidLayoutSubviews() { //화면에 보일 구간 슬라이더 셋팅값
         let margin: CGFloat = 20.0
         let width = view.bounds.width - 2.0 * margin
         rangeSlider.frame = CGRect(x: margin, y: margin + topLayoutGuide.length + 270,
                                    width: width, height: 31.0) // height은 두꼐
     }
-    override func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning() { //메모리 관련 경고 함수
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @objc func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
-        
-        
-        lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime)
-        
-        if(Float(rangeSlider.lowerValue) >= pvProgressView.value){
-            pvProgressView.value = Float(rangeSlider.lowerValue)
+    
+    @objc func rangeSliderValueChanged(_ rangeSlider: RangeSlider) { //구간 슬라이드 이벤트
+        lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime) // 구간 슬라이드를 잡고 슬라이드 할 시 현재 진행 시간 표시
+        if(Float(rangeSlider.lowerValue) >= pvProgressView.value){ //A구간 값이 현재 진행값 보다 같거 나 클경우 조건문
+            pvProgressView.value = Float(rangeSlider.lowerValue) //현재 진행값은 A구간 값과 같다.
             audioPlayer.currentTime = TimeInterval(rangeSlider.lowerValue)// A구간과 같은 지점에서 시작할 때 A구간에서 시작하게 해준다. 없으면 현재실행 slider가 처음부터 시작한다.
-            if(changeState == 1){
-                audioPlayer.play()
-                setPlayButtons(false, pause: true, stop:false)
-                changeState = 1
-                lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime)
-                
+            if(changeState == 1){ //만약 음악이 재생상태에서 구간 슬라이드를 슬라이드 했을 경우
+                audioPlayer.play() //음악을 재생하고
+                setPlayButtons(false, pause: true, stop:false) //음악 상태를 다음과 같이 셋팅해주고
+                changeState = 1 //음악은 계속 재생상태인 "1"로 유지
+                lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime)// 현재 재생중인 텍스트 값은 현재 재생값으로 그대로 대치
             }
         }
-        else{
-            
+        if(Float(rangeSlider.upperValue) <= pvProgressView.value){ // B구간 값이 재생 프로그레스 값보다 작거나 같을 경우 조건문
+            pvProgressView.value = Float(rangeSlider.upperValue)// 재생 프로그래스 값은 B구간 슬라이드 값과 같아진다.
         }
-        if(Float(rangeSlider.upperValue) <= pvProgressView.value){
-            pvProgressView.value = Float(rangeSlider.upperValue)
-        }
-        aPartTime.text = convertNSTimeInterval12String(rangeSlider.lowerValue)
-        bPartTime.text = convertNSTimeInterval12String(rangeSlider.upperValue)
-        print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
-        
+        aPartTime.text = convertNSTimeInterval12String(rangeSlider.lowerValue) //A구간 텍스트 값에 현재 A구간 위치 값 대입
+        bPartTime.text = convertNSTimeInterval12String(rangeSlider.upperValue) //B구간 텍스트 값에 현재 B구간 위치 값 대입
+        print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))") //구간 슬라이드 위치 값 콘솔 출력
     }
-    
-    
-    
-    
     
     // 파일선택
     func selectAudioFile(){
         audioFile = Bundle.main.url(forResource:"별", withExtension: "mp3")
     }
     
-    //재생 모드의 초기화
+    //재생 모드의 초기화 셋팅
     func initplay(){
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFile)
@@ -120,8 +104,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
         soundSlider.value = 1.0 //슬라이더(soundSlider) 볼륨 1.0으로 초기화
         
         
-        rangeSlider.minimumValue = 0
-        rangeSlider.maximumValue = audioPlayer.duration
+        rangeSlider.minimumValue = 0 //구간 슬라이더의 최솟값은 0
+        rangeSlider.maximumValue = audioPlayer.duration //구간 슬라이드의 최대값은 음악 재생길이 값과 동일
         pvProgressView.value = 0 //프로그레스 뷰(pvProgressView)의 진행 0으로 초기화
         pvProgressView.maximumValue = Float(audioPlayer.duration) //프로그래스 바의 최대 값을 음악 시간으로 잡는다
         
@@ -165,13 +149,20 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     // 0.1초마다 호출되며 재생 시간을 표시함
-    @objc func updatePlayTime(){
+    @objc func updatePlayTime(){ //어떤 상태이든 0.1초마다 계속 실행되는 함수인걸 명심
         lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime) // 재생 시간인 audioPlayer.currentTime을 lblCurrentTime에 나타냄
         pvProgressView.value = Float(audioPlayer.currentTime)
         if(pvProgressView.value >= Float(rangeSlider.upperValue)){
-            audioPlayer.pause()
-            setPlayButtons(true, pause: false, stop: true)
-            changeState = 2
+            pvProgressView.value = Float(rangeSlider.lowerValue)
+            audioPlayer.currentTime = rangeSlider.lowerValue
+            if(repeatState == true){
+                abPartDidFinishPlaying()
+            }
+            else if (repeatState == false){
+                audioPlayer.stop()
+                setPlayButtons(true, pause: false, stop: false)
+                changeState = 0
+            }
         }
         //        pvProgressView.value = Float(audioPlayer.currentTime) // 프로그레스(Progress View)인 pvProgressPlay의 진행 상황
     }
@@ -193,6 +184,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
         lbCurrentTime.text = convertNSTimeInterval12String(0)
         setPlayButtons(true, pause: false, stop: false)
         progressTimer.invalidate() // 타이머 무효화
+        pvProgressView.value = Float(rangeSlider.lowerValue)
         rangeSlider.lowerValue = 0
         rangeSlider.upperValue = Double(audioPlayer.duration)
         //        pvProgressView.value = 0 //프로그레스 뷰(pvProgressView)의 진행 0으로 초기화
@@ -218,7 +210,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
         if(pvProgressView.value >= Float(rangeSlider.upperValue)){
             pvProgressView.value = Float(rangeSlider.upperValue)
         }
-        audioPlayer.currentTime = TimeInterval(pvProgressView.value)// 잡아당긴 곳 부터 시작
+        
+        audioPlayer.currentTime = TimeInterval(pvProgressView.value) // 잡아당긴 곳 부터 시작
         lbCurrentTime.text =  convertNSTimeInterval12String(audioPlayer.currentTime)
         if(changeState == 1){
             audioPlayer.play()//슬라이드 하고 놓아도 재생상태 유지
@@ -230,10 +223,55 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     
-    // 재생이 종료되었을 때 호출함
+    // 재생이 완전 종료되었을 때 호출함, 즉(upperValue == audioPlayer.duration 일경우 해당)
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        progressTimer.invalidate() // 타이머 무효화
-        setPlayButtons(true, pause: false, stop: false)
+        print("종료됨 플래그")
+        if(flag == true){
+            if(repeatState == true){
+                if(rangeSlider.lowerValue != 0){
+                    pvProgressView.value = Float(rangeSlider.lowerValue)
+                    audioPlayer.play()
+                    setPlayButtons(false, pause: true, stop: false)
+                    changeState = 1
+                }
+                
+            }
+            else if(repeatState == false){
+                audioPlayer.stop()
+                progressTimer.invalidate() // 타이머 무효화
+                setPlayButtons(true, pause: false, stop: false)
+            }
+            
+        }
+    }
+    
+    //구간 반복으로 종료되었을 때
+    func abPartDidFinishPlaying(){
+        if(repeatState == true){
+            pvProgressView.value = Float(rangeSlider.lowerValue)
+            audioPlayer.play()
+            setPlayButtons(false, pause: true, stop: false)
+            changeState = 1
+            
+        }
+        
+    }
+    
+    @IBAction func btnRepeat(_ sender: UIButton) { //반복 버튼 클릭 이벤트
+        if(sender.isSelected == true) {
+            sender.isSelected = false
+            repeatState = false
+            UserDefaults.standard.set(false, forKey: "repeatState")//반복상태를 로컬 저장소에 저장해둔다        
+            btnRepeat.setImage(UIImage(named: "repeat.png"), for: UIControl.State.normal)
+            print("반복 꺼짐")
+            
+        } else {
+            sender.isSelected = true
+            repeatState = true
+            UserDefaults.standard.set(true, forKey: "repeatState")
+            btnRepeat.setImage(UIImage(named: "repeat_s.png"), for: UIControl.State.normal)
+            print("반복 켜짐")
+        }
     }
     
 }

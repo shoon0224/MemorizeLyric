@@ -19,6 +19,9 @@
 		CA6CF80224C557DE00576F2D /* MemorizeLyricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80124C557DE00576F2D /* MemorizeLyricTests.swift */; };
 		CA6CF80D24C557DE00576F2D /* MemorizeLyricUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */; };
 		CAFF9AC424CC0AE300B54CB7 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */; };
+		CAFF9ACE24CD3FDD00B54CB7 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFF9ACD24CD3FDD00B54CB7 /* pin.png */; };
+		CAFF9AD124CD5C2900B54CB7 /* repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFF9ACF24CD5C2800B54CB7 /* repeat.png */; };
+		CAFF9AD224CD5C2900B54CB7 /* repeat_s.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFF9AD024CD5C2800B54CB7 /* repeat_s.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeLyricUITests.swift; sourceTree = "<group>"; };
 		CA6CF80E24C557DE00576F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		CAFF9ACD24CD3FDD00B54CB7 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		CAFF9ACF24CD5C2800B54CB7 /* repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeat.png; sourceTree = "<group>"; };
+		CAFF9AD024CD5C2800B54CB7 /* repeat_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeat_s.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 			children = (
 				CA34D47D24CB475A002A0BEE /* 별.mp3 */,
 				CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */,
+				CAFF9ACD24CD3FDD00B54CB7 /* pin.png */,
+				CAFF9AD024CD5C2800B54CB7 /* repeat_s.png */,
+				CAFF9ACF24CD5C2800B54CB7 /* repeat.png */,
 				CA34D47B24CB4759002A0BEE /* Made in you.mp3 */,
 				CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */,
 				CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */,
@@ -244,11 +253,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFF9AD224CD5C2900B54CB7 /* repeat_s.png in Resources */,
 				CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */,
+				CAFF9ACE24CD3FDD00B54CB7 /* pin.png in Resources */,
 				CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */,
 				CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */,
 				CA6CF7F424C557DE00576F2D /* Assets.xcassets in Resources */,
 				CA6CF7F224C557DE00576F2D /* Main.storyboard in Resources */,
+				CAFF9AD124CD5C2900B54CB7 /* repeat.png in Resources */,
 				CA34D47F24CB475A002A0BEE /* 처음 보는 나.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

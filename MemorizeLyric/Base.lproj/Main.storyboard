@@ -33,10 +33,6 @@
                                 <rect key="frame" x="100" y="692.66666666666663" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="repeat" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="krG-4a-bOe">
-                                <rect key="frame" x="234" y="692.66666666666663" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="th5-aG-3z6">
                                 <rect key="frame" x="32" y="443" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -100,8 +96,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CqE-C9-axA">
+                                <rect key="frame" x="26" y="361" width="318" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="progressSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="GzH-tI-lUn"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqf-7O-sQf">
+                                <rect key="frame" x="239" y="684" width="39" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Button" image="repeat_s.png">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRepeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZM8-kQ-f97"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9OL-k9-wzF">
-                                <rect key="frame" x="41" y="145" width="293" height="208"/>
+                                <rect key="frame" x="41" y="134" width="293" height="208"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">가끔씩 길을 잃을 때면
@@ -161,18 +179,6 @@ You’re my star
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CqE-C9-axA">
-                                <rect key="frame" x="26" y="361" width="323" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="thumbTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <connections>
-                                    <action selector="progressSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="GzH-tI-lUn"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -181,13 +187,13 @@ You’re my star
                     <connections>
                         <outlet property="aPartTime" destination="th5-aG-3z6" id="hCG-qJ-aq8"/>
                         <outlet property="bPartTime" destination="EUE-XZ-D1w" id="Pot-aX-9Mw"/>
-                        <outlet property="btLoop" destination="krG-4a-bOe" id="QXl-ro-M8s"/>
                         <outlet property="btRandom" destination="9qG-FX-9XR" id="VcI-PP-FXc"/>
                         <outlet property="btnList" destination="ZV7-6a-n4Z" id="w5O-gx-0AY"/>
                         <outlet property="btnNext" destination="WaQ-ub-Fl4" id="UQ4-gb-Mo9"/>
                         <outlet property="btnPause" destination="IOg-nA-Hjh" id="N7B-9I-3eB"/>
                         <outlet property="btnPlay" destination="1Bd-kS-TxH" id="e2P-p8-bYC"/>
                         <outlet property="btnPre" destination="yMw-u8-Y7D" id="HIE-yA-HU9"/>
+                        <outlet property="btnRepeat" destination="zqf-7O-sQf" id="S3N-IL-4GC"/>
                         <outlet property="btnStop" destination="PtM-Q6-9cQ" id="6v2-b6-Zd8"/>
                         <outlet property="lbCurrentTime" destination="Typ-rG-TVA" id="wfV-0w-QFP"/>
                         <outlet property="lbEndTime" destination="qrA-zb-ejV" id="0Iz-g9-Ktl"/>
@@ -243,7 +249,7 @@ You’re my star
         </scene>
     </scenes>
     <resources>
-        <image name="repeat" catalog="system" width="128" height="99"/>
+        <image name="repeat_s.png" width="22.399999618530273" height="23.200000762939453"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>
     </resources>
 </document>

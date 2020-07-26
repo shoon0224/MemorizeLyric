@@ -17,7 +17,7 @@ class RangeSliderTrackLayer: CALayer {
             return
         }
         // Clip
-        let cornerRadius = bounds.height * slider.curvaceousness / 1.0 //프로그레스바 양쪽을 얼마나 둥글게 할것인지
+        let cornerRadius = bounds.height * slider.curvaceousness / 10.0 //프로그레스바 양쪽을 얼마나 둥글게 할것인지
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         ctx.addPath(path.cgPath)
         
@@ -60,7 +60,7 @@ class RangeSliderThumbLayer: CALayer {
             return
         }
         
-        let thumbFrame = bounds.insetBy(dx: 5.0, dy: 5.0) // 슬라이더 원의 찌그러짐 정도
+        let thumbFrame = bounds.insetBy(dx: 13.0, dy: 5.0) // 슬라이더 원의 찌그러짐 정도
         let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0 //슬라이더 원의 동그라미 정도
         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
         
@@ -96,7 +96,7 @@ public class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable public var maximumValue: Double = 200 { //슬라이더의 최대값
+    @IBInspectable public var maximumValue: Double = 300 { //슬라이더의 최대값
         willSet(newValue) {
             assert(newValue > minimumValue, "RangeSlider: maximumValue should be greater than minimumValue")
         }
@@ -114,7 +114,7 @@ public class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable public var upperValue: Double = 200 {//초기값
+    @IBInspectable public var upperValue: Double = 230 {//초기값
         didSet {
             if upperValue > maximumValue {
                 upperValue = maximumValue
@@ -123,8 +123,8 @@ public class RangeSlider: UIControl {
         }
     }
     
-    var gapBetweenThumbs: Double { //원잡고 터치했을 떄 손가락에 붙어있는 정도, 값이 커지면 손가락보다 슬라이드가 더됨
-        return 0.5 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
+    var gapBetweenThumbs: Double { //A파트와 B파트 간격
+        return 0.2 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
     
     @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) { //바 색깔
@@ -227,15 +227,15 @@ public class RangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height/3)
+        trackLayer.frame = bounds.insetBy(dx: 15.0, dy: bounds.height/3) //바 길이
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
-        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/10.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
         
         let upperThumbCenter = CGFloat(positionForValue(upperValue))
-        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/15.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
         CATransaction.commit()
@@ -243,7 +243,7 @@ public class RangeSlider: UIControl {
     
     func positionForValue(_ value: Double) -> Double {
         return Double(bounds.width - thumbWidth) * (value - minimumValue) /
-            (maximumValue - minimumValue) + Double(thumbWidth/2.0)
+            (maximumValue - minimumValue) + Double(thumbWidth/100.0)
     }
     
     func boundValue(_ value: Double, toLowerValue lowerValue: Double, upperValue: Double) -> Double {
