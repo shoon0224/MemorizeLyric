@@ -8,7 +8,6 @@
 
 import UIKit
 import QuartzCore
-import AVFoundation
 
 class RangeSliderTrackLayer: CALayer {
     weak var rangeSlider: RangeSlider?
@@ -60,7 +59,7 @@ class RangeSliderThumbLayer: CALayer {
             return
         }
         
-        let thumbFrame = bounds.insetBy(dx: 13.0, dy: 5.0) // 슬라이더 원의 찌그러짐 정도
+        let thumbFrame = bounds.insetBy(dx: 11.0, dy: 5.0) // 슬라이더 원의 찌그러짐 정도
         let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0 //슬라이더 원의 동그라미 정도
         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
         
@@ -84,6 +83,7 @@ class RangeSliderThumbLayer: CALayer {
 }
 
 
+
 @IBDesignable
 public class RangeSlider: UIControl {
 
@@ -96,7 +96,7 @@ public class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable public var maximumValue: Double = 300 { //슬라이더의 최대값
+    @IBInspectable public var maximumValue: Double = 10 { //슬라이더의 최대값
         willSet(newValue) {
             assert(newValue > minimumValue, "RangeSlider: maximumValue should be greater than minimumValue")
         }
@@ -114,7 +114,7 @@ public class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable public var upperValue: Double = 230 {//초기값
+    @IBInspectable public var upperValue: Double = 10 {//초기값
         didSet {
             if upperValue > maximumValue {
                 upperValue = maximumValue
@@ -124,7 +124,7 @@ public class RangeSlider: UIControl {
     }
     
     var gapBetweenThumbs: Double { //A파트와 B파트 간격
-        return 0.2 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
+        return 0.15 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
     
     @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) { //바 색깔
