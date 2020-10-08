@@ -10,6 +10,9 @@ import UIKit
 import AVFoundation
 import QuartzCore
 import MediaPlayer
+import Speech
+import AVFoundation
+
 
 class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource{
     
@@ -42,7 +45,19 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
     @IBOutlet var soundSlider: UISlider!
     @IBOutlet var btRandom: UIImageView!
     @IBOutlet var btnRepeat: UIButton!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableView1: UITableView!
+    @IBOutlet var btnAm: UIButton!
+    @IBOutlet var btnAp: UIButton!
+    @IBOutlet var btnBm: UIButton!
+    @IBOutlet var btnBp: UIButton!
+    @IBOutlet var tableView2: UITableView!
+    @IBOutlet var btnMyList: UIButton!
+    @IBOutlet var btnAddMy: UIButton!
+    
+    @IBOutlet weak var transcriptionTextField: UITextView! // stt
+    @IBOutlet weak var sttBtn: UIButton! //stt
+    
+    
     
     
     override func viewDidLoad() {
@@ -51,7 +66,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         pvProgressView.setThumbImage(UIImage(named: "pin.png"), for: UIControl.State.normal) // 평상시 재생중인 핀 이미지
         pvProgressView.setThumbImage(UIImage(named: "pin.png"), for: UIControl.State.highlighted) //드래그 시 재생중인 핀 이미지
         btnRepeat.setImage(UIImage(named: "repeat.png"), for: UIControl.State.normal) //반복 재생 이미지 기본값
-        tableView.isHidden = true
+        tableView1.isHidden = true
+        tableView2.isHidden = true
         view.addSubview(rangeSlider)// 구간 슬라이더 보이기
         rangeSlider.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), for: .valueChanged) //구간슬라이더 함수
         soundSlider.value = 1.0 //슬라이더(soundSlider) 볼륨 1.0으로 초기화
@@ -59,6 +75,38 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         updateLabels() //첫 곡의 제목 가수
         
     }
+    
+    //MARK:- STT
+    func requestSpeechAuth() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            if authStatus == SFSpeechRecognizerAuthorizationStatus.authorized {
+                if let path = Bundle.main.url(forResource: "test", withExtension: "m4a") {
+                    do {
+                        let sound = try AVAudioPlayer(contentsOf: path)
+                        self.audioPlayer = sound
+                        self.audioPlayer.delegate = self
+                        sound.play()
+                    } catch {
+                        print("Error!")
+                    }
+                    
+                    let recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ko-KR"))
+                    let request = SFSpeechURLRecognitionRequest(url: path)
+                    recognizer?.recognitionTask(with: request) { (result, error) in
+                        if let error = error {
+                            print("There was no error: \(error)")
+                        } else {
+                            self.transcriptionTextField.text = result?.bestTranscription.formattedString
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @IBAction func playBtn(_ sender: UIButton) {
+        requestSpeechAuth()
+    }
+    
     
     
     // MARK:- 구간 슬라이더 함수
@@ -97,7 +145,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
     
     //MARK:- 음악 정보
     // 파일선택
-    func selectAudioFile(){
+    func selectAudioFile(){ //음악파일이 존재하는 경로를 나타낸다.
         currentAudio = readSongNameFromPlist(currentAudioIndex)
         currentAudioPath = URL(fileURLWithPath: Bundle.main.path(forResource: currentAudio, ofType: "mp3")!)
         print("\(String(describing: currentAudioPath))")
@@ -358,6 +406,35 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         }
     }
     
+    @IBAction func btnApartM(_ sender: UIButton) {
+        rangeSlider.lowerValue -= 1.0
+        aPartTime.text = convertNSTimeInterval12String(rangeSlider.lowerValue)
+    }
+    @IBAction func btnApartP(_ sender: UIButton) {
+        lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime)
+        rangeSlider.lowerValue += 1.0
+        aPartTime.text = convertNSTimeInterval12String(rangeSlider.lowerValue)
+        if(Float(rangeSlider.lowerValue) > pvProgressView.value){ //A구간 값이 현재 진행값 보다 같거 나 클경우 조건문
+            pvProgressView.value = Float(rangeSlider.lowerValue) //현재 진행값은 A구간 값과 같다.
+            audioPlayer.currentTime = TimeInterval(rangeSlider.lowerValue)// A구간과 같은 지점에서 시작할 때 A구간에서 시작하게 해준다. 없으면 현재실행 slider가 처음부터 시작한다.
+        }
+        
+    }
+    @IBAction func btnBpartM(_ sender: UIButton) {
+        lbCurrentTime.text = convertNSTimeInterval12String(audioPlayer.currentTime)
+        rangeSlider.upperValue -= 1.0
+        bPartTime.text = convertNSTimeInterval12String(rangeSlider.upperValue)
+        if(Float(rangeSlider.upperValue) < pvProgressView.value){
+            pvProgressView.value = Float(rangeSlider.upperValue)
+            audioPlayer.currentTime = TimeInterval(rangeSlider.upperValue)
+        }
+    }
+    @IBAction func btnBpartP(_ sender: UIButton) {
+        rangeSlider.upperValue += 1.0
+        bPartTime.text = convertNSTimeInterval12String(rangeSlider.upperValue)
+    }
+    
+    
     //MARK:- 상태 함수
     // 재생이 완전 종료되었을 때 호출함, 즉(upperValue == audioPlayer.duration 일경우 해당)
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -397,39 +474,67 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return audioList.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //리스트 몇개?
+        return tableView == tableView1 ? audioList.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        var songNameDict = NSDictionary();
-        songNameDict = audioList.object(at: (indexPath as NSIndexPath).row) as! NSDictionary
-        let songName = songNameDict.value(forKey: "songName") as! String
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
-        cell.textLabel?.textColor = UIColor.black
-        cell.textLabel?.text = songName
-        cell.detailTextLabel?.textColor = UIColor.black
-        return cell
+        if( tableView == tableView1){
+            var songNameDict = NSDictionary(); // NSDictionarty()는 여러 자료를 하나의 딕셔너리에 넣고 원하는 자료를 꺼내오고 싶을 때, 딕셔너리를 생성할 때 부여해준 key를 통해 검색하여 가져온다.
+            songNameDict = audioList.object(at: (indexPath as NSIndexPath).row) as! NSDictionary
+            let songName = songNameDict.value(forKey: "songName") as! String
+            
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
+            cell.textLabel?.textColor = UIColor.white
+            cell.textLabel?.text = songName
+            cell.detailTextLabel?.textColor = UIColor.white
+            cell.backgroundColor = UIColor.black
+            tableView1.backgroundColor = UIColor.black
+            return cell
+        }
+        else if(tableView == tableView2){
+            let cell2 = UITableViewCell(style: .subtitle, reuseIdentifier: "yourCell")
+            cell2.backgroundColor = UIColor.black
+            tableView2.backgroundColor = UIColor.black
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //테이블에서 음악 선택 시 이벤트
-        tableView.deselectRow(at: indexPath, animated: true)
-        currentAudioIndex = (indexPath as NSIndexPath).row
-        initplay()
-        audioPlayer.play() //오디오플레이어 실행
-        setPlayButtons(false, pause: true, stop:false) //플레이버튼은 꺼지고 일시정지버튼은 켜진다.
-        rangeSlider.lowerValue = 0
-        rangeSlider.upperValue = audioPlayer.duration
+        if(tableView == tableView1){
+            tableView.deselectRow(at: indexPath, animated: true)
+            currentAudioIndex = (indexPath as NSIndexPath).row
+            initplay()
+            audioPlayer.play() //오디오플레이어 실행
+            setPlayButtons(false, pause: true, stop:false) //플레이버튼은 꺼지고 일시정지버튼은 켜진다.
+            rangeSlider.lowerValue = 0
+            rangeSlider.upperValue = audioPlayer.duration
+        }
+        else if (tableView == tableView2){
+            
+        }
     }
     
     @IBAction func btnListButton(_ sender: UIButton) {
-        if(tableView.isHidden == true){
-            tableView.isHidden = false
+        if(tableView1.isHidden == true){
+            tableView1.isHidden = false
         }
-        else if(tableView.isHidden == false){
-            tableView.isHidden = true
+        else if(tableView1.isHidden == false){
+            tableView1.isHidden = true
         }
     }
+    
+    @IBAction func btnMyList(_ sender: UIButton) {
+        if(tableView2.isHidden == true){
+            tableView2.isHidden = false
+        }
+        else if(tableView2.isHidden == false){
+            tableView2.isHidden = true
+        }
+    }
+    @IBAction func btnAddMyList(_ sender: UIButton) {
+        
+    }
+    
 }
 

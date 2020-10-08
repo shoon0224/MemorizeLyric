@@ -10,6 +10,7 @@
 		CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47B24CB4759002A0BEE /* Made in you.mp3 */; };
 		CA34D47F24CB475A002A0BEE /* 처음 보는 나.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */; };
 		CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47D24CB475A002A0BEE /* 별.mp3 */; };
+		CA527C15252EF91900090060 /* test.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CA527C14252EF91900090060 /* test.m4a */; };
 		CA6CF7EB24C557DE00576F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */; };
 		CA6CF7ED24C557DE00576F2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */; };
 		CA6CF7EF24C557DE00576F2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EE24C557DE00576F2D /* ViewController.swift */; };
@@ -45,8 +46,9 @@
 
 /* Begin PBXFileReference section */
 		CA34D47B24CB4759002A0BEE /* Made in you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Made in you.mp3"; sourceTree = "<group>"; };
-		CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "처음 보는 나.mp3"; sourceTree = "<group>"; };
-		CA34D47D24CB475A002A0BEE /* 별.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "별.mp3"; sourceTree = "<group>"; };
+		CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "처음 보는 나.mp3"; path = "../처음 보는 나.mp3"; sourceTree = "<group>"; };
+		CA34D47D24CB475A002A0BEE /* 별.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "별.mp3"; path = "../별.mp3"; sourceTree = "<group>"; };
+		CA527C14252EF91900090060 /* test.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4a; sourceTree = "<group>"; };
 		CA6CF7E724C557DE00576F2D /* MemorizeLyric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeLyric.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA56921324D3350B00093B71 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				CA34D47B24CB4759002A0BEE /* Made in you.mp3 */,
+				CAE5C16624CF297C00229971 /* +82 Bars.mp3 */,
+				CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */,
+				CA34D47D24CB475A002A0BEE /* 별.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		CA56921424D3352C00093B71 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CAFF9ACD24CD3FDD00B54CB7 /* pin.png */,
+				CAFF9AD024CD5C2800B54CB7 /* repeat_s.png */,
+				CAFF9ACF24CD5C2800B54CB7 /* repeat.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		CA56921524D3353C00093B71 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				CACFE51A24CEB42D007C4C9E /* list.plist */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		CA6CF7DE24C557DE00576F2D = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +148,10 @@
 		CA6CF7E924C557DE00576F2D /* MemorizeLyric */ = {
 			isa = PBXGroup;
 			children = (
-				CA34D47D24CB475A002A0BEE /* 별.mp3 */,
-				CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */,
-				CAE5C16624CF297C00229971 /* +82 Bars.mp3 */,
-				CACFE51A24CEB42D007C4C9E /* list.plist */,
-				CAFF9ACD24CD3FDD00B54CB7 /* pin.png */,
-				CAFF9AD024CD5C2800B54CB7 /* repeat_s.png */,
-				CAFF9ACF24CD5C2800B54CB7 /* repeat.png */,
-				CA34D47B24CB4759002A0BEE /* Made in you.mp3 */,
+				CAF2F651252B6BBB0035A3A6 /* Resources */,
+				CA56921524D3353C00093B71 /* List */,
+				CA56921424D3352C00093B71 /* Images */,
+				CA56921324D3350B00093B71 /* Music */,
 				CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */,
 				CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */,
 				CA6CF7EE24C557DE00576F2D /* ViewController.swift */,
@@ -153,6 +180,14 @@
 				CA6CF80E24C557DE00576F2D /* Info.plist */,
 			);
 			path = MemorizeLyricUITests;
+			sourceTree = "<group>";
+		};
+		CAF2F651252B6BBB0035A3A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA527C14252EF91900090060 /* test.m4a */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +298,7 @@
 				CAFF9AD224CD5C2900B54CB7 /* repeat_s.png in Resources */,
 				CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */,
 				CAFF9ACE24CD3FDD00B54CB7 /* pin.png in Resources */,
+				CA527C15252EF91900090060 /* test.m4a in Resources */,
 				CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */,
 				CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */,
 				CA6CF7F424C557DE00576F2D /* Assets.xcassets in Resources */,
