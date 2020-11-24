@@ -14,7 +14,7 @@ import Speech
 import AVFoundation
 
 
-class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate{
     
     var audioList:NSArray! //플레이 리스트에 음악 리스트배열
     var currentAudioPath:URL! //재생할 오디오의 파일명 변수
@@ -27,6 +27,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
     var progressTimer : Timer! // 타이머를 위한 변수
     var repeatState = false //반복재생 상태 초기화
     let timePlayerSelector:Selector = #selector(ViewController.updatePlayTime) //#selector이란 함수는 함수내에서 매개변수로 다른 함수를 호출할때 사용하는 함수
+    
+    
     
     @IBOutlet var lbSongName: UILabel!
     @IBOutlet var lbArtistName: UILabel!
@@ -50,9 +52,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
     @IBOutlet var btnAp: UIButton!
     @IBOutlet var btnBm: UIButton!
     @IBOutlet var btnBp: UIButton!
-    @IBOutlet var tableView2: UITableView!
-    @IBOutlet var btnMyList: UIButton!
     @IBOutlet var btnAddMy: UIButton!
+    @IBOutlet var lbGoodBad: UILabel!
+    
     
     @IBOutlet weak var transcriptionTextField: UITextView! // stt
     @IBOutlet weak var sttBtn: UIButton! //stt
@@ -67,13 +69,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         pvProgressView.setThumbImage(UIImage(named: "pin.png"), for: UIControl.State.highlighted) //드래그 시 재생중인 핀 이미지
         btnRepeat.setImage(UIImage(named: "repeat.png"), for: UIControl.State.normal) //반복 재생 이미지 기본값
         tableView1.isHidden = true
-        tableView2.isHidden = true
         view.addSubview(rangeSlider)// 구간 슬라이더 보이기
         rangeSlider.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), for: .valueChanged) //구간슬라이더 함수
         soundSlider.value = 1.0 //슬라이더(soundSlider) 볼륨 1.0으로 초기화
         initplay() //재생 모드 초기화함수 실행
         updateLabels() //첫 곡의 제목 가수
-        
+        tfLyric.text = "음악을 재생하세요."
     }
     
     //MARK:- STT
@@ -104,14 +105,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         }
     }
     @IBAction func playBtn(_ sender: UIButton) {
-        requestSpeechAuth()
+        requestSpeechAuth() //기존에 있던 음성녹음파일 재생
+        
     }
     
     
     
     // MARK:- 구간 슬라이더 함수
     override func viewDidLayoutSubviews() { //화면에 보일 구간 슬라이더 셋팅값
-        let margin: CGFloat = 20.0
+        let margin: CGFloat = 2.0
         let width = view.bounds.width - 2.0 * margin
         rangeSlider.frame = CGRect(x: margin, y: margin + topLayoutGuide.length + 313,
                                    width: width, height: 31.0) // height은 두꼐
@@ -208,9 +210,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         updateLyric()
     }
     
-    func updateLyric(){
+    func updateLyric(){ // Textfeild에 가사가 출력되는 부분
         let lyric = readLyric(currentAudioIndex)
         tfLyric.text = lyric
+        //        tfLyric.text = ""
     }
     
     func updateArtistNameLabel(){// 아티스트 이름 최신화
@@ -288,6 +291,127 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
                 setPlayButtons(true, pause: false, stop: false)
                 changeState = 0
             }
+        }
+        //실시간 가사 편법
+        if(pvProgressView.value <= 23){
+            tfLyric.text = "널 바라보는 순간이"
+        }
+        if(pvProgressView.value > 23 && pvProgressView.value <= 32){
+            tfLyric.text = "갈수록 길어지는 나를 발견하게 됐을 때"
+        }
+        if(pvProgressView.value > 32 && pvProgressView.value <= 39){
+            tfLyric.text = "두근거려 오는 너와 눈 마주치는 순간"
+        }
+        if(pvProgressView.value > 39 && pvProgressView.value <= 46){
+            tfLyric.text = "피해버리는 내 떨림에"
+        }
+        if(pvProgressView.value > 46 && pvProgressView.value <= 54){
+            tfLyric.text = "나도 놀라서 얼버무리는 내 모습이"
+        }
+        if(pvProgressView.value > 54 && pvProgressView.value <= 61){
+            tfLyric.text = "너에게 보여준 나의 유일한 맘"
+        }
+        if(pvProgressView.value > 61 && pvProgressView.value <= 65){
+            tfLyric.text = "말을 하려 해도"
+        }
+        if(pvProgressView.value > 65 && pvProgressView.value <= 69){
+            tfLyric.text = "막 뒤엉키는 준비한 고백은"
+        }
+        if(pvProgressView.value > 69 && pvProgressView.value <= 76){
+            tfLyric.text = "한 번도 보지 못한 답답한 내 모습"
+        }
+        if(pvProgressView.value > 76 && pvProgressView.value <= 82){
+            tfLyric.text = "널 사랑하기 전 나만 큼만"
+        }
+        if(pvProgressView.value > 82 && pvProgressView.value <= 91){
+            tfLyric.text = "우연히 친구 만날 때처럼 만큼만"
+        }
+        if(pvProgressView.value > 91 && pvProgressView.value <= 98){
+            tfLyric.text = "조금 더 침착 하게 조금 더 솔직하게"
+        }
+        if(pvProgressView.value > 98 && pvProgressView.value <= 102){
+            tfLyric.text = "너 만을 위해"
+        }
+        if(pvProgressView.value > 102 && pvProgressView.value <= 107){
+            tfLyric.text = "꼭 해주고 싶던 말"
+        }
+        if(pvProgressView.value > 107 && pvProgressView.value <= 110){
+            tfLyric.text = "사랑해"
+        }
+        if(pvProgressView.value > 121 && pvProgressView.value <= 126){
+            tfLyric.text = "아무도 몰라"
+        }
+        if(pvProgressView.value > 126 && pvProgressView.value <= 129){
+            tfLyric.text = "나 혼자 많이 고민 했던"
+        }
+        if(pvProgressView.value > 129 && pvProgressView.value <= 136){
+            tfLyric.text = "니 생각 니 걱정 들이 버거워서"
+        }
+        if(pvProgressView.value > 136 && pvProgressView.value <= 141){
+            tfLyric.text = "말을 하려 해도"
+        }
+        if(pvProgressView.value > 141 && pvProgressView.value <= 145){
+            tfLyric.text = "막 뒤엉키는 준비한 고맥은"
+        }
+        if(pvProgressView.value > 145 && pvProgressView.value <= 151){
+            tfLyric.text = "한 번도 보지 못한 답답한 내 모습"
+        }
+        if(pvProgressView.value > 151 && pvProgressView.value <= 158){
+            tfLyric.text = "널 사랑하기 전 나만큼만"
+        }
+        if(pvProgressView.value > 158 && pvProgressView.value <= 167){
+            tfLyric.text = "우연히 친구 만날 때처럼 만큼만"
+        }
+        if(pvProgressView.value > 167 && pvProgressView.value <= 174){
+            tfLyric.text = "조금 더 침착하게 조금 더 솔직하게"
+        }
+        if(pvProgressView.value > 174 && pvProgressView.value <= 178){
+            tfLyric.text = "너 만을 위해"
+        }
+        if(pvProgressView.value > 174 && pvProgressView.value <= 183){
+            tfLyric.text = "꼭 해주고 싶던 말"
+        }
+        if(pvProgressView.value > 183 && pvProgressView.value <= 184){
+            tfLyric.text = "사랑해"
+        }
+        if(pvProgressView.value > 184 && pvProgressView.value <= 191){
+            tfLyric.text = "너의 거절도 생각해 봤지만"
+        }
+        if(pvProgressView.value > 191 && pvProgressView.value <= 199){
+            tfLyric.text = "담아 두기에는 늦은 것 같기에"
+        }
+        if(pvProgressView.value > 202 && pvProgressView.value <= 208){
+            tfLyric.text = "널 사랑하기 전 나 만큼만"
+        }
+        if(pvProgressView.value > 209 && pvProgressView.value <= 216){
+            tfLyric.text = "우연히 친구 만날 때 처럼 만큼만"
+        }
+        if(pvProgressView.value > 216 && pvProgressView.value <= 220){
+            tfLyric.text = "조금더 침착하게"
+        }
+        if(pvProgressView.value > 220 && pvProgressView.value <= 228){
+            tfLyric.text = "조금 더 솔직하게"
+        }
+        if(pvProgressView.value > 231 && pvProgressView.value <= 234){
+            tfLyric.text = "너 만을 위해"
+        }
+        if(pvProgressView.value > 234 && pvProgressView.value <= 240){
+            tfLyric.text = "꼭 해주고 싶던 말"
+        }
+        if(pvProgressView.value > 241 && pvProgressView.value <= 250){
+            tfLyric.text = "사랑해"
+        }
+        
+        
+        if(tfLyric.text == transcriptionTextField.text)
+        {
+            lbGoodBad.text = "좋아요! 잘부르네요"
+            
+        }
+        else if(tfLyric.text != transcriptionTextField.text)
+        {
+            lbGoodBad.text = "다시 불러봐요.."
+            
         }
         //        pvProgressView.value = Float(audioPlayer.currentTime) // 프로그레스(Progress View)인 pvProgressPlay의 진행 상황
     }
@@ -377,7 +501,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
             UserDefaults.standard.set(false, forKey: "repeatState")//반복상태를 로컬 저장소에 저장해둔다
             btnRepeat.setImage(UIImage(named: "repeat.png"), for: UIControl.State.normal)
             print("반복 꺼짐")
-            
         } else {
             sender.isSelected = true
             repeatState = true
@@ -404,6 +527,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
             setPlayButtons(false, pause: true, stop:false)
             changeState = 1
         }
+        
     }
     
     @IBAction func btnApartM(_ sender: UIButton) {
@@ -492,11 +616,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
             tableView1.backgroundColor = UIColor.black
             return cell
         }
-        else if(tableView == tableView2){
-            let cell2 = UITableViewCell(style: .subtitle, reuseIdentifier: "yourCell")
-            cell2.backgroundColor = UIColor.black
-            tableView2.backgroundColor = UIColor.black
-        }
         return UITableViewCell()
     }
     
@@ -510,9 +629,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
             rangeSlider.lowerValue = 0
             rangeSlider.upperValue = audioPlayer.duration
         }
-        else if (tableView == tableView2){
-            
-        }
     }
     
     @IBAction func btnListButton(_ sender: UIButton) {
@@ -524,14 +640,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelega
         }
     }
     
-    @IBAction func btnMyList(_ sender: UIButton) {
-        if(tableView2.isHidden == true){
-            tableView2.isHidden = false
-        }
-        else if(tableView2.isHidden == false){
-            tableView2.isHidden = true
-        }
-    }
     @IBAction func btnAddMyList(_ sender: UIButton) {
         
     }

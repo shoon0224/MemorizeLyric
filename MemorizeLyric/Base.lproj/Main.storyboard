@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,43 +14,65 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemorizeLyric" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y72-RN-7f0">
+                                <rect key="frame" x="0.0" y="717" width="428" height="209"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="darkTextColor"/>
+                                <color key="sectionIndexTrackingBackgroundColor" systemColor="darkTextColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="hTi-8F-QrV">
+                                        <rect key="frame" x="0.0" y="28" width="428" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hTi-8F-QrV" id="gWN-rI-Mz7">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Eje-kt-xEw"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="auP-OH-xnj"/>
+                                </connections>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="currentTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Typ-rG-TVA">
-                                <rect key="frame" x="32" y="414" width="93" height="21"/>
+                                <rect key="frame" x="53" y="398" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-0.5" minValue="-1.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="op7-W6-TNI">
-                                <rect key="frame" x="44" y="626.66666666666663" width="286" height="30"/>
+                                <rect key="frame" x="65" y="611" width="286" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="soundSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="jGb-Zm-hQM"/>
                                 </connections>
                             </slider>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="shuffle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9qG-FX-9XR">
-                                <rect key="frame" x="100" y="692.66666666666663" width="40" height="40"/>
+                                <rect key="frame" x="121" y="677" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="th5-aG-3z6">
-                                <rect key="frame" x="32" y="443" width="84" height="21"/>
+                                <rect key="frame" x="53" y="427" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bpart" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUE-XZ-D1w">
-                                <rect key="frame" x="273" y="443" width="67" height="21"/>
+                                <rect key="frame" x="294" y="427" width="67" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-u8-Y7D">
-                                <rect key="frame" x="39" y="550" width="30" height="30"/>
+                                <rect key="frame" x="60" y="534" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PRE"/>
                                 <connections>
@@ -58,7 +80,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaQ-ub-Fl4">
-                                <rect key="frame" x="299" y="550" width="39" height="30"/>
+                                <rect key="frame" x="320" y="534" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="NEXT"/>
                                 <connections>
@@ -66,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOg-nA-Hjh">
-                                <rect key="frame" x="100" y="550" width="48" height="30"/>
+                                <rect key="frame" x="121" y="534" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PAUSE"/>
                                 <connections>
@@ -74,7 +96,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtM-Q6-9cQ">
-                                <rect key="frame" x="231" y="550" width="39" height="30"/>
+                                <rect key="frame" x="252" y="534" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="STOP"/>
                                 <connections>
@@ -82,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-kS-TxH">
-                                <rect key="frame" x="169" y="550" width="36" height="30"/>
+                                <rect key="frame" x="190" y="534" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PLAY"/>
                                 <connections>
@@ -90,7 +112,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-6a-n4Z">
-                                <rect key="frame" x="273" y="104" width="39" height="30"/>
+                                <rect key="frame" x="342" y="89" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="리스트"/>
                                 <connections>
@@ -98,14 +120,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="endTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrA-zb-ejV">
-                                <rect key="frame" x="273" y="414" width="67" height="21"/>
+                                <rect key="frame" x="294" y="398" width="67" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CqE-C9-axA">
-                                <rect key="frame" x="26" y="361" width="318" height="30"/>
+                                <rect key="frame" x="10" y="345" width="409" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,7 +138,7 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqf-7O-sQf">
-                                <rect key="frame" x="239" y="684" width="39" height="56"/>
+                                <rect key="frame" x="260" y="668" width="39" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Button" image="repeat.png">
@@ -126,105 +148,30 @@
                                     <action selector="btnRepeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZM8-kQ-f97"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9OL-k9-wzF">
-                                <rect key="frame" x="41" y="165" width="293" height="56"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9OL-k9-wzF">
+                                <rect key="frame" x="62" y="149" width="293" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">가끔씩 길을 잃을 때면
-저 하늘의 별을 봐 넌 왠지
-모든걸 아는 것만 그런 것만 같아서
-뭐든 다 말해도 넌 받아줄 것 같아서 yeah
-복잡해진 마음 따라 하염없이 걷다 보면
-아무 생각 없이 앞만 보고 
-달리는 내 모습을 봐
-나 정말 잘하고 있는 걸까
-내가 가는 이 길이 맞는 걸까
-때론 아무것도 모르겠어
-별들에게 물어 난 am I right right
-하늘 가득히 수 놓인 저 많은 별들 중에
-너는 나만의 빛 you’re my light oh
-같은 꿈을 꾸고 같은 곳을 바라보며 걷는
-그런 우리가 되길
-내가 무너질 때면
-내 손을 잡아줬던 너 나와 함께 해준 너
-달빛 마저 무뎌진
-그 밤을 밝혀줬던 너 나를 비춰줬던 너
-넌 별 별 저 별 별 
-날 지켜주고 이끌어줬던 별
-You’re my star
-넌 별 별 저 별 별 
-너만 곁에 있어준다면 나 그 별이 될 거야 
-때로는 헷갈려 잘 걷다가도
-나침반 없는 배처럼 잃은 항로
-비틀거리며 고개를 들고서
-북극성을 찾아 헤매어 또 너를 불러
-Where you at where you at my star
-네가 없는 난 날개 잃은 천사
-I keep on fallin’ fallin’ without you
-내 길을 밝혀줘
-하늘 가득히 수 놓인 저 많은 별들 중에
-너는 나만의 빛 you’re my light oh
-같은 꿈을 꾸고 같은 곳을 바라보며 걷는
-그런 우리가 되길
-내가 무너질 때면
-내 손을 잡아줬던 너 나와 함께 해준 너
-달빛 마저 무뎌진
-그 밤을 밝혀줬던 너 나를 비춰줬던 너
-언젠간 그 별이 되어 너의 곁에 갈 거야
-그때가 되면
-말할게 보고싶었다고 많이 그리웠다고
-고마웠다고
-넌 별 별 저 별 별 
-날 지켜주고 이끌어줬던 별
-You’re my star
-넌 별 별 저 별 별 
-네가 반짝일 수 있는 밤이 될게
-이젠 내가 너를 지켜줄게
-넌 별 별 저 별 별 
-너만 곁에 있어준다면 나 그 별이 될 거야 
-그 별이 될 거야</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="아티스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-xk-sNy">
-                                <rect key="frame" x="41" y="136" width="177" height="21"/>
+                                <rect key="frame" x="62" y="120" width="177" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="노래제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMQ-95-jmV">
-                                <rect key="frame" x="41" y="107" width="198" height="27"/>
+                                <rect key="frame" x="62" y="91" width="198" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y72-RN-7f0">
-                                <rect key="frame" x="0.0" y="526" width="190" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" systemColor="darkTextColor"/>
-                                <color key="sectionIndexTrackingBackgroundColor" systemColor="darkTextColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="hTi-8F-QrV">
-                                        <rect key="frame" x="0.0" y="28" width="190" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hTi-8F-QrV" id="gWN-rI-Mz7">
-                                            <rect key="frame" x="0.0" y="0.0" width="190" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Eje-kt-xEw"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="auP-OH-xnj"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGY-gb-qsJ">
-                                <rect key="frame" x="299" y="482" width="43" height="45"/>
+                                <rect key="frame" x="320" y="466" width="43" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="+"/>
@@ -233,7 +180,7 @@ You’re my star
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vir-OZ-z9r">
-                                <rect key="frame" x="28" y="482" width="43" height="45"/>
+                                <rect key="frame" x="49" y="466" width="43" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="-"/>
@@ -242,7 +189,7 @@ You’re my star
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-k1-wnQ">
-                                <rect key="frame" x="257" y="482" width="43" height="45"/>
+                                <rect key="frame" x="278" y="466" width="43" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="-"/>
@@ -251,7 +198,7 @@ You’re my star
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxZ-SM-ezm">
-                                <rect key="frame" x="73" y="482" width="43" height="45"/>
+                                <rect key="frame" x="94" y="466" width="43" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="+"/>
@@ -259,38 +206,8 @@ You’re my star
                                     <action selector="btnApartP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fie-gj-dah"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YBu-0S-V7O">
-                                <rect key="frame" x="191" y="526" width="187" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yourCell" id="2Tp-JT-01A">
-                                        <rect key="frame" x="0.0" y="28" width="187" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Tp-JT-01A" id="xVr-8n-y2i">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="sYn-4v-g8a"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mCK-ai-ldp"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-iW-DtS">
-                                <rect key="frame" x="329" y="104" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="MY"/>
-                                <connections>
-                                    <action selector="btnMyList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YdV-Zf-Bbr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6i-sP-I4m">
-                                <rect key="frame" x="161" y="439" width="52" height="30"/>
+                                <rect key="frame" x="182" y="423" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="추가하기"/>
                                 <connections>
@@ -298,21 +215,35 @@ You’re my star
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bw0-Yu-6KJ">
-                                <rect key="frame" x="172" y="305" width="30" height="30"/>
+                                <rect key="frame" x="182" y="289" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="STT"/>
+                                <state key="normal" title="음성인식"/>
                                 <connections>
                                     <action selector="playBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MQa-3a-ADw"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="STT버튼을 눌려 음성인식을 해주세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B1s-Lz-kwk">
-                                <rect key="frame" x="41" y="252" width="293" height="37"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="STT버튼을 눌려 음성인식을 해주세요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B1s-Lz-kwk">
+                                <rect key="frame" x="62" y="236" width="293" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비교해보아요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCY-yZ-WPX">
+                                <rect key="frame" x="36" y="188" width="345" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="가사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azy-7q-9fr">
+                                <rect key="frame" x="62" y="149" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -328,7 +259,6 @@ You’re my star
                         <outlet property="btnBm" destination="Rav-k1-wnQ" id="90K-oa-NVm"/>
                         <outlet property="btnBp" destination="bGY-gb-qsJ" id="p2G-rI-glQ"/>
                         <outlet property="btnList" destination="ZV7-6a-n4Z" id="w5O-gx-0AY"/>
-                        <outlet property="btnMyList" destination="PMx-iW-DtS" id="LM6-4w-zYG"/>
                         <outlet property="btnNext" destination="WaQ-ub-Fl4" id="UQ4-gb-Mo9"/>
                         <outlet property="btnPause" destination="IOg-nA-Hjh" id="N7B-9I-3eB"/>
                         <outlet property="btnPlay" destination="1Bd-kS-TxH" id="e2P-p8-bYC"/>
@@ -338,19 +268,19 @@ You’re my star
                         <outlet property="lbArtistName" destination="HUg-xk-sNy" id="v3V-U2-LZL"/>
                         <outlet property="lbCurrentTime" destination="Typ-rG-TVA" id="wfV-0w-QFP"/>
                         <outlet property="lbEndTime" destination="qrA-zb-ejV" id="0Iz-g9-Ktl"/>
+                        <outlet property="lbGoodBad" destination="UCY-yZ-WPX" id="Pf0-uu-SlE"/>
                         <outlet property="lbSongName" destination="pMQ-95-jmV" id="udJ-F5-l8r"/>
                         <outlet property="pvProgressView" destination="CqE-C9-axA" id="fvq-ej-oRq"/>
                         <outlet property="soundSlider" destination="op7-W6-TNI" id="yZZ-P0-34L"/>
                         <outlet property="sttBtn" destination="Bw0-Yu-6KJ" id="OFM-1H-0aC"/>
                         <outlet property="tableView1" destination="Y72-RN-7f0" id="5wF-Uf-xAD"/>
-                        <outlet property="tableView2" destination="YBu-0S-V7O" id="RYL-B9-qif"/>
                         <outlet property="tfLyric" destination="9OL-k9-wzF" id="hup-9s-Gq4"/>
                         <outlet property="transcriptionTextField" destination="B1s-Lz-kwk" id="UTo-aS-17D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.79999999999995" y="136.69950738916256"/>
+            <point key="canvasLocation" x="968.69158878504663" y="136.06911447084235"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqS-8h-LeT">
@@ -358,7 +288,7 @@ You’re my star
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PS5-0i-SXU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bT7-2t-9Nu">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

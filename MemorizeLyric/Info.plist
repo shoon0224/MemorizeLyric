@@ -61,6 +61,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>우리는 당신의 오디오를 분석하고 번역할 필요가 있다.</string>
+	<string>졸업작품을 위하여..</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>test</string>
 </dict>
 </plist>

@@ -10,7 +10,6 @@
 		CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47B24CB4759002A0BEE /* Made in you.mp3 */; };
 		CA34D47F24CB475A002A0BEE /* 처음 보는 나.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */; };
 		CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA34D47D24CB475A002A0BEE /* 별.mp3 */; };
-		CA527C15252EF91900090060 /* test.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CA527C14252EF91900090060 /* test.m4a */; };
 		CA6CF7EB24C557DE00576F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */; };
 		CA6CF7ED24C557DE00576F2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */; };
 		CA6CF7EF24C557DE00576F2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF7EE24C557DE00576F2D /* ViewController.swift */; };
@@ -21,6 +20,8 @@
 		CA6CF80D24C557DE00576F2D /* MemorizeLyricUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CF80C24C557DE00576F2D /* MemorizeLyricUITests.swift */; };
 		CACFE51B24CEB42D007C4C9E /* list.plist in Resources */ = {isa = PBXBuildFile; fileRef = CACFE51A24CEB42D007C4C9E /* list.plist */; };
 		CAE5C16724CF297C00229971 /* +82 Bars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAE5C16624CF297C00229971 /* +82 Bars.mp3 */; };
+		CAFAFE2A2563951A006C7D2E /* test1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CAFAFE292563951A006C7D2E /* test1.m4a */; };
+		CAFE182F255CEC4B004F591D /* test.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CAFE182E255CEC4A004F591D /* test.m4a */; };
 		CAFF9AC424CC0AE300B54CB7 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */; };
 		CAFF9ACE24CD3FDD00B54CB7 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFF9ACD24CD3FDD00B54CB7 /* pin.png */; };
 		CAFF9AD124CD5C2900B54CB7 /* repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFF9ACF24CD5C2800B54CB7 /* repeat.png */; };
@@ -48,7 +49,6 @@
 		CA34D47B24CB4759002A0BEE /* Made in you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Made in you.mp3"; sourceTree = "<group>"; };
 		CA34D47C24CB4759002A0BEE /* 처음 보는 나.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "처음 보는 나.mp3"; path = "../처음 보는 나.mp3"; sourceTree = "<group>"; };
 		CA34D47D24CB475A002A0BEE /* 별.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "별.mp3"; path = "../별.mp3"; sourceTree = "<group>"; };
-		CA527C14252EF91900090060 /* test.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4a; sourceTree = "<group>"; };
 		CA6CF7E724C557DE00576F2D /* MemorizeLyric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeLyric.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CF7EA24C557DE00576F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6CF7EC24C557DE00576F2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		CA6CF80E24C557DE00576F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACFE51A24CEB42D007C4C9E /* list.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = list.plist; sourceTree = "<group>"; };
 		CAE5C16624CF297C00229971 /* +82 Bars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "+82 Bars.mp3"; sourceTree = "<group>"; };
+		CAFAFE292563951A006C7D2E /* test1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test1.m4a; sourceTree = "<group>"; };
+		CAFE182E255CEC4A004F591D /* test.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4a; sourceTree = "<group>"; };
 		CAFF9AC324CC0AE300B54CB7 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		CAFF9ACD24CD3FDD00B54CB7 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		CAFF9ACF24CD5C2800B54CB7 /* repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeat.png; sourceTree = "<group>"; };
@@ -185,7 +187,8 @@
 		CAF2F651252B6BBB0035A3A6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA527C14252EF91900090060 /* test.m4a */,
+				CAFAFE292563951A006C7D2E /* test1.m4a */,
+				CAFE182E255CEC4A004F591D /* test.m4a */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,9 +301,10 @@
 				CAFF9AD224CD5C2900B54CB7 /* repeat_s.png in Resources */,
 				CA34D48024CB475A002A0BEE /* 별.mp3 in Resources */,
 				CAFF9ACE24CD3FDD00B54CB7 /* pin.png in Resources */,
-				CA527C15252EF91900090060 /* test.m4a in Resources */,
+				CAFE182F255CEC4B004F591D /* test.m4a in Resources */,
 				CA34D47E24CB475A002A0BEE /* Made in you.mp3 in Resources */,
 				CA6CF7F724C557DE00576F2D /* LaunchScreen.storyboard in Resources */,
+				CAFAFE2A2563951A006C7D2E /* test1.m4a in Resources */,
 				CA6CF7F424C557DE00576F2D /* Assets.xcassets in Resources */,
 				CA6CF7F224C557DE00576F2D /* Main.storyboard in Resources */,
 				CAFF9AD124CD5C2900B54CB7 /* repeat.png in Resources */,
